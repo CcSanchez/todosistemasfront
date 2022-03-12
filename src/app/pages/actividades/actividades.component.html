@@ -1,0 +1,74 @@
+<div style="padding: 5%;">
+    <mat-toolbar>
+        <div style="width: 100%;" fxLayout="row" fxLayoutAlign="space-around center">
+            <div fxFlex>
+                <span>Actividades</span>
+            </div>
+            <div fxFlex="5">
+                <button matTooltip="Crear actividad" (click)="crearActividad()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
+    <table style="width: 100%" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="nombreActividad">
+            <th mat-header-cell *matHeaderCellDef> Actividad </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombreActividad}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaEstimada">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="diasRetraso">
+            <th mat-header-cell *matHeaderCellDef> Dias retrazo </th>
+            <td mat-cell *matCellDef="let element"> {{element.diasDeRetrazo}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="empleadoAsignado">
+            <th mat-header-cell *matHeaderCellDef> Empleado </th>
+            <td mat-cell *matCellDef="let element"> {{element.empleadoAsignado}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef> Editar </th>
+            <td mat-cell *matCellDef="let element">
+                <button matTooltip="Editar actividad" (click)="actualizarActividad(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <td mat-cell *matCellDef="let element">
+                <button matTooltip="Borrar actividad" (click)="eliminar(element.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>

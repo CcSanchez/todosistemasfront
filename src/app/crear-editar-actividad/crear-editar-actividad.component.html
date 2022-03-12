@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="form.valid?accion():''">
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre actividad :</mat-label>
+            <input matInput formControlName="nombreActividad">
+            <mat-error>Campo requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Estado :</mat-label>
+            <mat-select formControlName="estado">
+                <mat-option [value]="estado.id" *ngFor="let estado of estados">
+                    {{estado.nombre}}</mat-option>
+            </mat-select>
+            <mat-error>Campo requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Empleado :</mat-label>
+            <mat-select formControlName="empleado">
+                <mat-option [value]="empleado.id" *ngFor="let empleado of empleados">
+                    {{empleado.nombre}}</mat-option>
+            </mat-select>
+            <mat-error>Campo requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha estimada :</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="fecha">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-error>Campo requerido</mat-error>
+        </mat-form-field>
+
+    </div>
+    <div style="display: flex;justify-content: center;align-items: center;">
+        <button style="height: 5vh;" type="submit">{{data['editar']?'Editar Actividad':'Crear Actividad'}}</button>
+    </div>
+
+</form>
